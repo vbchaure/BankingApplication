@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style>
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-sm navbar-dark fixed"
+		style="background-color: #222222; color: #f2f2f2;">
+		<h3>
+			<a class="navbar-brand" th:href="@{'/'}">AMDOCS Bank</a>
+		</h3>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" th:href="@{'/new'}">Create
+						New User</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{'/'}">Show
+						All Users</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{'/acc'}">Show
+						All Accounts</a></li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<h3 align="center">All Account Details</h3>
+	<br>
+	<br>
+	<div class="container">
+		<tr>
+
+			<div class="col-sm-5" align="center">
+				<div class="panel-body center">
+					<table class="center table ">
+						<thead class="thead-dark">
+							<tr>
+								<th>Account ID</th>
+								<th>User ID</th>
+								<th>Branch Name</th>
+								<th>Account Type</th>
+								<th>Account Balance</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="acc : ${listacc }">
+								<td th:text="${acc.accid}">Account ID</td>
+								<td th:text="${acc.userid}">User ID</td>
+								<td th:text="${acc.bname}">Branch Name</td>
+								<td th:text="${acc.atype}">Account Type</td>
+								<td th:text="${acc.abalance}">Account Balance</td>
+								<td><a th:href="@{'/acc/edit/' + ${acc.accid}}">Edit</a></td>
+								<td><a th:href="@{'/acc/delete/' + ${acc.accid}}">Delete</a>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+				</div>
+
+			</div>
+
+		</tr>
+
+		</tbody>
+		</table>
+		<div>
+		
+</body>
+</html>
